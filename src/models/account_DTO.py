@@ -6,7 +6,7 @@ class AccountDTO:
     def __init__(self, account: quickbooks.objects.account):
         self.name = account.Name
         self.classification = account.Classification
-        self.currency_ref = account.CurrencyRef.__dict__
+        self.currency_ref = account.CurrencyRef.__dict__ if account.CurrencyRef is not None else None
         self.account_type = account.AccountType
         self.active = account.Active
         self.current_balance = account.CurrentBalance

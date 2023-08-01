@@ -7,8 +7,8 @@ from src.models.account_DTO import AccountDTO
 
 
 class QuickBooksProvider:
-    def __init__(self, quickbooks_client: QuickBooks, account: quickbooks.objects.account):
-        self.account = account
+    def __init__(self, quickbooks_client: QuickBooks):
+        self.account = quickbooks.objects.account.Account
         self.quickbooks_client = quickbooks_client
 
     def get_accounts(self):

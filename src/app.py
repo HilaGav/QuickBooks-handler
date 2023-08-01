@@ -1,9 +1,8 @@
 from flask import Flask, redirect, request
-from quickbooks.objects.account import Account
 
 from src.authentication.authentication_handler import AuthenticationHandler
-from src.quickbooks.quickbooks_provider import QuickBooksProvider
-from src.quickbooks.quikbooks_factory import QuickBooksFactory
+from src.quickbooks_utils.quickbooks_provider import QuickBooksProvider
+from src.quickbooks_utils.quikbooks_factory import QuickBooksFactory
 
 
 class QuickBooksApp:
@@ -24,7 +23,7 @@ class QuickBooksApp:
         realm_id = request.args.get('realmId')
         self.auth_handler.add_bearer_token(auth_code, realm_id)
         quickbooks_client = self.quickbooks_factory.init_client()
-        self.quickbooks_provider = QuickBooksProvider(quickbooks_client, Account)
+        self.quickbooks_provider = QuickBooksProvider(quickbooks_client)
         return 'Login succeeded'
 
     def get_accounts(self):
