@@ -49,6 +49,22 @@ class TestQuickBooksProvider(unittest.TestCase):
                           '"test", "active": false, "current_balance": null}]'
         self.assertEqual(results, expected_result)
 
+    @patch('quickbooks.objects.Account.all')
+    def test_get_accounts_when_account_empty_return_empty_array(self, mock_all):
+        account = self.create_mock_account()
+        mock_auth_handler = Mock(spec=AuthenticationHandler)
+        mock_auth_handler.auth_client = self.mock_auth_client
+
+        mock_all.return_value = []
+
+        factory = QuickBooksFactory(auth_handler=mock_auth_handler)
+        client = factory.init_client()
+
+        provider = QuickBooksProvider(client)
+        results = provider.get_accounts()
+
+        assert results == '[]'
+
 
 if __name__ == '__main__':
     unittest.main()

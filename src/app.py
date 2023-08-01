@@ -6,10 +6,10 @@ from src.quickbooks_utils.quikbooks_factory import QuickBooksFactory
 
 
 class QuickBooksApp:
-    def __init__(self):
+    def __init__(self, auth_handler_prm: AuthenticationHandler, quickbooks_factory_prm: QuickBooksFactory):
         self.app = Flask(__name__)
-        self.auth_handler = AuthenticationHandler()
-        self.quickbooks_factory = QuickBooksFactory(self.auth_handler)
+        self.auth_handler = auth_handler_prm
+        self.quickbooks_factory = quickbooks_factory_prm
         self.app.route('/login')(self.login)
         self.app.route('/auth-callback')(self.auth_callback)
         self.app.route('/api/accounts')(self.get_accounts)
@@ -37,5 +37,7 @@ class QuickBooksApp:
 
 
 if __name__ == '__main__':
-    app = QuickBooksApp()
+    auth_handler = AuthenticationHandler()
+    quickbooks_factory = QuickBooksFactory(auth_handler)
+    app = QuickBooksApp(auth_handler, quickbooks_factory)
     app.run()
