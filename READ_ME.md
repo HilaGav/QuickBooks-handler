@@ -1,7 +1,6 @@
 <H1>Getting Started:</H1>
 
 <H3>Install requirements.txt file:</H3>
-cd OAuth2PythonSampleApp/ </br>
 pip install -r requirements.txt 
 
 <H3>Run your app:</H3>
