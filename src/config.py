@@ -6,4 +6,4 @@ class AuthenticationConfiguration:
     client_secret = 'bZyLlb2PxO649Gi6QoQqHg3CESyIGLn8gYVuE5S2'
     redirect_uri = 'http://localhost:5000/auth-callback'
     environment = 'sandbox'
-    scope = Scopes.ACCOUNTING
+    scopes = [Scopes.ACCOUNTING]

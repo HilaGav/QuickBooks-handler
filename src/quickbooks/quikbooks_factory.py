@@ -1,5 +1,6 @@
-from src.Authentication.authentication_handler import AuthenticationHandler
 from quickbooks import QuickBooks
+
+from src.authentication.authentication_handler import AuthenticationHandler
 
 
 class QuickBooksFactory:

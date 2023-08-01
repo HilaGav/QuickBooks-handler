@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime
 from unittest.mock import Mock
 from quickbooks.objects import Account
-from src.Authentication.authentication_handler import AuthenticationHandler
+from src.authentication.authentication_handler import AuthenticationHandler
 from src.quickbooks.quikbooks_factory import QuickBooksFactory
 
 
